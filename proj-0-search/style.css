@@ -1,0 +1,32 @@
+a{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+form{
+    margin-top: 200px;
+    text-align: center;
+    width: 100%;
+}
+input{
+    height: 30px;
+    border-color: lightgray;
+    border-width: 1px;
+}
+input[type="text"]{
+    border-radius: 10px;
+    width: 400px;
+}
+input[type="submit"]{
+    border-radius: 5px;
+    margin-top: 5px;
+    background-color: white;
+}
+input:hover{
+    box-shadow: 2px 2px darkgray;
+}
+h1{
+    margin: 20px;
+    font-size: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(128, 128, 128);
+}
