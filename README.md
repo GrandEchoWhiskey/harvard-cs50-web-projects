@@ -24,7 +24,7 @@ Certificate key: [none yet][certificate_link]
 ## Projects:
 Name | Description | Technology
 :--- | :--- | :---:
-[Search][serach_link] | Reproduction of google search. | [![HTML][html_img]![CSS][css_img]](#)
+[Search][search_link] | Reproduction of google search. | [![HTML][html_img]![CSS][css_img]](#)
 [Wiki][wiki_link] | Comming Soon | [![Python][py_img]![HTML][html_img]![CSS][css_img]](#)
 [Commerce][commerce_link] | Comming Soon | [![Python][py_img]![HTML][html_img]![CSS][css_img]](#)
 [Mail][mail_link] | Comming Soon | [![JavaScript][js_img]![HTML][html_img]![CSS][css_img]](#)
