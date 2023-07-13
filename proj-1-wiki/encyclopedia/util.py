@@ -3,6 +3,8 @@ import re
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 
+import markdown2
+import random
 
 def list_entries():
     """
@@ -25,13 +27,31 @@ def save_entry(title, content):
     default_storage.save(filename, ContentFile(content))
 
 
-def get_entry(title):
+def get_entry(title, html=True):
     """
     Retrieves an encyclopedia entry by its title. If no such
     entry exists, the function returns None.
     """
     try:
         f = default_storage.open(f"entries/{title}.md")
-        return f.read().decode("utf-8")
+        if html:
+            return markdown2.markdown(f.read().decode("utf-8"))
+        else:
+            return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
+    
+
+def search_entries(query):
+    """
+    Retrieves a list of encyclopedia entries that contain the query.
+    """
+    return [entry for entry in list_entries() if query.lower() in entry.lower()]
+
+
+def random_entry():
+    """
+    Retrieves a random encyclopedia entry.
+    """
+    entries = list_entries()
+    return random.choice(entries) if entries else None

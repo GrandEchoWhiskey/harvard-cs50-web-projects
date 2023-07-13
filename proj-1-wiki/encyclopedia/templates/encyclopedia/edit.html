@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia - Edit {{ title }}
+{% endblock %}
+
+{% block body %}
+    <h1>Edit page</h1>
+
+    <form>
+        <div>
+            <input type="text" name="title" placeholder="Title", value="{{title}}", readonly>
+        </div>
+        <textarea name="content" placeholder="Content">{{entry}}</textarea>
+        <div>
+            <input type="submit" value="Edit">
+        </div>
+    </form>
+
+{% endblock %}
