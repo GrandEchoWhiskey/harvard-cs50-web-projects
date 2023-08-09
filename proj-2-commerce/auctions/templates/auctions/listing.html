@@ -1,0 +1,101 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <div class="row">
+    {% if owner and listing.active %}
+
+        <form class="mx-2">
+            <input type="text" name="close" value="{{ listing.id }}" hidden>
+            <input type="submit" class="btn btn-primary" value="Close Listing">
+        </form>
+
+    {% endif %}
+
+    <form class="mx-2">
+        {% if watchlisted %}
+            <input type="text" name="remove_wl" value="{{ listing.id }}" hidden>
+            <input type="submit" class="btn btn-primary" value="Remove from watchlist">
+        {% else %}
+            <input type="text" name="add_wl" value="{{ listing.id }}" hidden>
+            <input type="submit" class="btn btn-primary" value="Add to watchlist">
+        {% endif %}
+    </form>
+    </div>
+
+    {% if err %}
+
+        <p style="color: red">{{ err }}</p>
+
+    {% endif %}
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>{{ listing.title }}</h2>
+            <a href="{% url 'category' category=listing.category %}"><small class="text-muted">#{{ listing.category }}</small></a>
+            <p>Posted by: {{ listing.user }}</p>
+
+            <br>
+
+            <h4>Description</h4>
+            <p>{{ listing.description }}</p>
+
+        </div>
+        <div class="col-md-6">
+            <img src="{{ listing.image }}" alt="Image of {{ listing.title }}" style="max-width: 100%; max-height: 70%;"/><br>
+            {% if bid %}
+
+                <p>Highest bidder: {{ bid.user }}<br>
+                Amount: {{ bid.bid }}</p>
+
+            {% else %}
+
+                <p>Starting from: {{ listing.price }}</p>
+
+            {% endif %}
+            {% if listing.active %}
+                <form>
+                    <input type="text" name="bid" placeholder="Bid">
+                    <input type="submit" class="btn btn-primary" value="Place Bid">
+                </form>
+            {% else %}
+                <p>
+                    This listing is closed.
+                    <br>Winner is "{{ bid.user }}".
+                </p>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <h4>Comments</h4>
+
+    {% if comments %}
+
+        {% for comment in comments %}
+            <p style="background-color: rgba(210, 222, 245, 0.863);">
+                User: {{ comment.user }}<br>
+                <small>{{ comment.time }}</small><br>
+                "{{ comment.text }}"<br>
+            </p>
+        {% endfor %}
+
+    {% else %}
+
+        <p>There are no comments yet.</p>
+
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <form>
+            <input type="text" name="comment" placeholder="Comment">
+            <input type="submit" class="btn btn-primary" value="Send">
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}">Log in</a> to comment or <a href="{% url 'register' %}">register</a> if you don't have an account.
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Create Listing</h2>
+
+    <form>
+        <input type="text" name="title" placeholder="Title"><br>
+        <textarea name="description" placeholder="Description" cols="50" rows="10"></textarea><br>
+        <input type="number" name="price" placeholder="Starting Bid"><br>
+        <input type="url" name="image" placeholder="Image URL"><br>
+        <select name="category">
+            <option value="fashion">Fashion</option>
+            <option value="toys">Toys</option>
+            <option value="electronics">Electronics</option>
+            <option value="home">Home</option>
+            <option value="other" selected>Other</option>
+        </select><br>
+        <input type="submit" value="Create Listing">
+    </form>
+
+{% endblock %}

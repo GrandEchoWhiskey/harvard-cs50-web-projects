@@ -1,11 +1,11 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>Active Listings</h2>
 
+    <h2>Watchlist</h2>
+    
     {% if listings %}
-
-    <div class="card-deck">
+        <div class="card-deck">
         {% for listing in listings %}
             <div class="card mx-0 px-0 col-sm-6 col-md-3 col-xl-2">
                 <img class="card-img-top" src="{{ listing.image }}" alt="Card image cap">
@@ -24,10 +24,10 @@
                 </div>
             </div>
         {% endfor %}
-    </div>
-
+        </div>
     {% else %}
-        <p>There are no active listings.</p>
+        <p>There are no active listings in this watchlist.</p>
     {% endif %}
+
 
 {% endblock %}
